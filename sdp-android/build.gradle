@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
-apply plugin: 'signing'
 
 buildscript {
     repositories {
@@ -123,51 +122,16 @@ createSDP{
     negativeMax = 60//change to 600 or any other value if needed
 }
 
-publishing {
-    publications {
-        release(MavenPublication) {
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
 
-            artifactId = 'sdp-android'
-            groupId = 'com.intuit.sdp'
-            version = '1.1.0'
-            artifact("$buildDir/outputs/aar/sdp-android-release.aar")
-
-            pom {
-                name = 'sdp'
-                description = 'A scalable size unit for Andorid'
-                url = 'https://github.com/intuit/sdp'
-                licenses {
-                    license {
-                        name = 'The MIT License (MIT)'
-                        url = 'https://github.com/intuit/sdp/blob/master/LICENSE'
-                    }
-                }
-                developers {
-                    developer {
-                        id = developerID
-                        name = developerName
-                        email = developerEmail
-                    }
-                }
-                scm {
-                    connection = 'scm:git@github.com:intuit/sdp.git'
-                    developerConnection = 'scm:git@github.com:intuit/sdp.git'
-                    url = 'https://github.com/intuit/sdp'
-                }
+                groupId = 'net.kdt.pojavlaunch'
+                artifactId = 'portrait-sdp'
+                version = '1.0.0'
             }
         }
     }
-    repositories {
-        maven {
-            url sonatypeRepo
-            credentials {
-                username sonatypeUsername
-                password sonatypePassword
-            }
-        }
-    }
-}
-
-signing {
-    sign publishing.publications.release
 }
