@@ -88,7 +88,7 @@ class SDPFactory extends DefaultTask {
             printWriter.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>")
             printWriter.println("<resources>")
             for(int i=1;i<=positiveMax;i++){
-                printWriter.printf("\t<dimen name=\"_%dsdp\">%.2f" + unit + "</dimen>\r\n",i,i)
+                printWriter.printf("\t<dimen name=\"_%dsdp\">%d" + unit + "</dimen>\r\n",i,i)
             }
             printWriter.println("</resources>")
             printWriter.close()
@@ -102,7 +102,7 @@ class SDPFactory extends DefaultTask {
             printWriter.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>")
             printWriter.println("<resources>")
             for(int i=1;i<=negativeMax;i++){
-                printWriter.printf("\t<dimen name=\"_minus%dsdp\">%.2f" + unit + "</dimen>\r\n",i,-i)
+                printWriter.printf("\t<dimen name=\"_minus%dsdp\">%d" + unit + "</dimen>\r\n",i,-i)
             }
             printWriter.println("</resources>")
             printWriter.close()
